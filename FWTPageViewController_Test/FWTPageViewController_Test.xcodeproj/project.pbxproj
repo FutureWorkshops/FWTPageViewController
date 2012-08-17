@@ -1,0 +1,336 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		E44A143815DE4CB4006C619A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E44A143715DE4CB4006C619A /* UIKit.framework */; };
+		E44A143A15DE4CB4006C619A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E44A143915DE4CB4006C619A /* Foundation.framework */; };
+		E44A143C15DE4CB4006C619A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E44A143B15DE4CB4006C619A /* CoreGraphics.framework */; };
+		E44A144215DE4CB4006C619A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E44A144015DE4CB4006C619A /* InfoPlist.strings */; };
+		E44A144415DE4CB4006C619A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E44A144315DE4CB4006C619A /* main.m */; };
+		E44A144815DE4CB4006C619A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E44A144715DE4CB4006C619A /* AppDelegate.m */; };
+		E44A144F15DE4CCB006C619A /* libFWTPageViewController.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E44A144E15DE4CCB006C619A /* libFWTPageViewController.a */; };
+		E44A145D15DE4DEE006C619A /* SamplePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E44A145C15DE4DEE006C619A /* SamplePickerViewController.m */; };
+		E44A146B15DE4EBE006C619A /* ContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E44A146A15DE4EBE006C619A /* ContainerViewController.m */; };
+		E44A146D15DE5011006C619A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E44A146C15DE5011006C619A /* QuartzCore.framework */; };
+		E44A147015DE51CA006C619A /* PageView.m in Sources */ = {isa = PBXBuildFile; fileRef = E44A146F15DE51CA006C619A /* PageView.m */; };
+		E44A148515DE5402006C619A /* CustomPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E44A148415DE5402006C619A /* CustomPageViewController.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		E44A143315DE4CB4006C619A /* FWTPageViewController_Test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FWTPageViewController_Test.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E44A143715DE4CB4006C619A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		E44A143915DE4CB4006C619A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		E44A143B15DE4CB4006C619A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		E44A143F15DE4CB4006C619A /* FWTPageViewController_Test-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "FWTPageViewController_Test-Info.plist"; sourceTree = "<group>"; };
+		E44A144115DE4CB4006C619A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		E44A144315DE4CB4006C619A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		E44A144515DE4CB4006C619A /* FWTPageViewController_Test-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FWTPageViewController_Test-Prefix.pch"; sourceTree = "<group>"; };
+		E44A144615DE4CB4006C619A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		E44A144715DE4CB4006C619A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		E44A144E15DE4CCB006C619A /* libFWTPageViewController.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFWTPageViewController.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E44A145B15DE4DEE006C619A /* SamplePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SamplePickerViewController.h; sourceTree = "<group>"; };
+		E44A145C15DE4DEE006C619A /* SamplePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SamplePickerViewController.m; sourceTree = "<group>"; };
+		E44A146915DE4EBE006C619A /* ContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContainerViewController.h; sourceTree = "<group>"; };
+		E44A146A15DE4EBE006C619A /* ContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContainerViewController.m; sourceTree = "<group>"; };
+		E44A146C15DE5011006C619A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		E44A146E15DE51C9006C619A /* PageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageView.h; sourceTree = "<group>"; };
+		E44A146F15DE51CA006C619A /* PageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageView.m; sourceTree = "<group>"; };
+		E44A148315DE5402006C619A /* CustomPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomPageViewController.h; sourceTree = "<group>"; };
+		E44A148415DE5402006C619A /* CustomPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomPageViewController.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		E44A143015DE4CB4006C619A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E44A146D15DE5011006C619A /* QuartzCore.framework in Frameworks */,
+				E44A144F15DE4CCB006C619A /* libFWTPageViewController.a in Frameworks */,
+				E44A143815DE4CB4006C619A /* UIKit.framework in Frameworks */,
+				E44A143A15DE4CB4006C619A /* Foundation.framework in Frameworks */,
+				E44A143C15DE4CB4006C619A /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		E44A142815DE4CB4006C619A = {
+			isa = PBXGroup;
+			children = (
+				E44A143D15DE4CB4006C619A /* FWTPageViewController_Test */,
+				E44A143615DE4CB4006C619A /* Frameworks */,
+				E44A143415DE4CB4006C619A /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		E44A143415DE4CB4006C619A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E44A143315DE4CB4006C619A /* FWTPageViewController_Test.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E44A143615DE4CB4006C619A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E44A144E15DE4CCB006C619A /* libFWTPageViewController.a */,
+				E44A146C15DE5011006C619A /* QuartzCore.framework */,
+				E44A143715DE4CB4006C619A /* UIKit.framework */,
+				E44A143915DE4CB4006C619A /* Foundation.framework */,
+				E44A143B15DE4CB4006C619A /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E44A143D15DE4CB4006C619A /* FWTPageViewController_Test */ = {
+			isa = PBXGroup;
+			children = (
+				E44A144615DE4CB4006C619A /* AppDelegate.h */,
+				E44A144715DE4CB4006C619A /* AppDelegate.m */,
+				E44A145B15DE4DEE006C619A /* SamplePickerViewController.h */,
+				E44A145C15DE4DEE006C619A /* SamplePickerViewController.m */,
+				E44A148615DE5409006C619A /* Page */,
+				E44A145F15DE4E79006C619A /* Subclass */,
+				E44A145E15DE4E5F006C619A /* Containers */,
+				E44A143E15DE4CB4006C619A /* Supporting Files */,
+			);
+			path = FWTPageViewController_Test;
+			sourceTree = "<group>";
+		};
+		E44A143E15DE4CB4006C619A /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				E44A143F15DE4CB4006C619A /* FWTPageViewController_Test-Info.plist */,
+				E44A144015DE4CB4006C619A /* InfoPlist.strings */,
+				E44A144315DE4CB4006C619A /* main.m */,
+				E44A144515DE4CB4006C619A /* FWTPageViewController_Test-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		E44A145E15DE4E5F006C619A /* Containers */ = {
+			isa = PBXGroup;
+			children = (
+				E44A146915DE4EBE006C619A /* ContainerViewController.h */,
+				E44A146A15DE4EBE006C619A /* ContainerViewController.m */,
+			);
+			name = Containers;
+			sourceTree = "<group>";
+		};
+		E44A145F15DE4E79006C619A /* Subclass */ = {
+			isa = PBXGroup;
+			children = (
+				E44A148315DE5402006C619A /* CustomPageViewController.h */,
+				E44A148415DE5402006C619A /* CustomPageViewController.m */,
+			);
+			name = Subclass;
+			sourceTree = "<group>";
+		};
+		E44A148615DE5409006C619A /* Page */ = {
+			isa = PBXGroup;
+			children = (
+				E44A146E15DE51C9006C619A /* PageView.h */,
+				E44A146F15DE51CA006C619A /* PageView.m */,
+			);
+			name = Page;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		E44A143215DE4CB4006C619A /* FWTPageViewController_Test */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E44A144B15DE4CB4006C619A /* Build configuration list for PBXNativeTarget "FWTPageViewController_Test" */;
+			buildPhases = (
+				E44A142F15DE4CB4006C619A /* Sources */,
+				E44A143015DE4CB4006C619A /* Frameworks */,
+				E44A143115DE4CB4006C619A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FWTPageViewController_Test;
+			productName = FWTPageViewController_Test;
+			productReference = E44A143315DE4CB4006C619A /* FWTPageViewController_Test.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E44A142A15DE4CB4006C619A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0440;
+				ORGANIZATIONNAME = "Marco Meschini";
+			};
+			buildConfigurationList = E44A142D15DE4CB4006C619A /* Build configuration list for PBXProject "FWTPageViewController_Test" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = E44A142815DE4CB4006C619A;
+			productRefGroup = E44A143415DE4CB4006C619A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E44A143215DE4CB4006C619A /* FWTPageViewController_Test */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		E44A143115DE4CB4006C619A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E44A144215DE4CB4006C619A /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		E44A142F15DE4CB4006C619A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E44A144415DE4CB4006C619A /* main.m in Sources */,
+				E44A144815DE4CB4006C619A /* AppDelegate.m in Sources */,
+				E44A145D15DE4DEE006C619A /* SamplePickerViewController.m in Sources */,
+				E44A146B15DE4EBE006C619A /* ContainerViewController.m in Sources */,
+				E44A147015DE51CA006C619A /* PageView.m in Sources */,
+				E44A148515DE5402006C619A /* CustomPageViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		E44A144015DE4CB4006C619A /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E44A144115DE4CB4006C619A /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		E44A144915DE4CB4006C619A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../FWTPageViewController/FWTPageViewController/\"/**";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/../FWTPageViewController/FWTPageViewController/\"/**";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		E44A144A15DE4CB4006C619A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../FWTPageViewController/FWTPageViewController/\"/**";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/../FWTPageViewController/FWTPageViewController/\"/**";
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		E44A144C15DE4CB4006C619A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "FWTPageViewController_Test/FWTPageViewController_Test-Prefix.pch";
+				INFOPLIST_FILE = "FWTPageViewController_Test/FWTPageViewController_Test-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../../Library/Developer/Xcode/DerivedData/FWTPageViewController-hhrwfdmyvrovfseoekogkfojjzxg/Build/Products/Debug-iphoneos\"",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		E44A144D15DE4CB4006C619A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "FWTPageViewController_Test/FWTPageViewController_Test-Prefix.pch";
+				INFOPLIST_FILE = "FWTPageViewController_Test/FWTPageViewController_Test-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../../Library/Developer/Xcode/DerivedData/FWTPageViewController-hhrwfdmyvrovfseoekogkfojjzxg/Build/Products/Debug-iphoneos\"",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		E44A142D15DE4CB4006C619A /* Build configuration list for PBXProject "FWTPageViewController_Test" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E44A144915DE4CB4006C619A /* Debug */,
+				E44A144A15DE4CB4006C619A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E44A144B15DE4CB4006C619A /* Build configuration list for PBXNativeTarget "FWTPageViewController_Test" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E44A144C15DE4CB4006C619A /* Debug */,
+				E44A144D15DE4CB4006C619A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = E44A142A15DE4CB4006C619A /* Project object */;
+}
