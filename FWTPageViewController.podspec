@@ -1,8 +1,8 @@
 Pod::Spec.new do |s|
-  s.name         = 'FWTPageViewController''
+  s.name         = 'FWTPageViewController'
   s.version      = '1.0.0'
   s.platform     = :ios
-  s.summary      = 'A very basic recycling scroll view'
+  s.summary      = 'A very basic recycling scroll view.'
   s.license      =  'Apache License, Version 2.0'
   s.homepage     = 'https://github.com/FutureWorkshops/FWTPageViewController'
   s.author       = { 'Marco Meschini' => 'marco@futureworkshops.com' }
