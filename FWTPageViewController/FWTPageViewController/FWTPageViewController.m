@@ -18,9 +18,12 @@ static char const * const pageNumberKey = "pageNumberKey";
     // these values are stored off before we start rotation so we adjust our content offset appropriately during rotation
     int           firstVisiblePageIndexBeforeRotation;
     CGFloat       percentScrolledIntoFirstVisiblePage;
+    
+    BOOL _changingOrientation;
 }
 @property (nonatomic, readwrite, retain) UIScrollView *pagingScrollView;
 @property (nonatomic, retain) NSMutableSet *recycledPages, *visiblePages;
+@property (nonatomic, getter = isChangingOrientation) BOOL changingOrientation;
 
 //
 - (void)tilePages;
@@ -189,7 +192,8 @@ static char const * const pageNumberKey = "pageNumberKey";
 #pragma mark - ScrollView delegate methods
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    [self tilePages];
+    if (![self isChangingOrientation])
+        [self tilePages];
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
@@ -211,6 +215,8 @@ static char const * const pageNumberKey = "pageNumberKey";
 
 - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
 {
+    self.changingOrientation = YES;
+    
     // here, our pagingScrollView bounds have not yet been updated for the new interface orientation. So this is a good
     // place to calculate the content offset that we will need in the new orientation
     CGFloat offset = self.pagingScrollView.contentOffset.x;
@@ -226,6 +232,11 @@ static char const * const pageNumberKey = "pageNumberKey";
         firstVisiblePageIndexBeforeRotation = 0;
         percentScrolledIntoFirstVisiblePage = offset / pageWidth;
     }
+}
+
+- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
+{
+    self.changingOrientation = NO;
 }
 
 - (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
