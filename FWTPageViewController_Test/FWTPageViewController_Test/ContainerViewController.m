@@ -68,7 +68,7 @@
 #pragma mark - FWTPageViewDataSource
 - (NSInteger)numberOfPagesInPageViewController:(FWTPageViewController *)pageViewController
 {
-    return 10;
+    return 18;
 }
 
 - (UIView *)pageViewController:(FWTPageViewController *)pageViewController pageForIndex:(NSInteger)pageIndex

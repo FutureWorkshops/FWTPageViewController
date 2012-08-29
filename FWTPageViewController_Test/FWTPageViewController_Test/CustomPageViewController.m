@@ -11,21 +11,21 @@
 
 @interface CustomPageViewController ()
 {
-    BOOL _pageControlUsed;
+//    BOOL _pageControlUsed;
 }
-@property (nonatomic, readwrite, retain) UIPageControl *pageControl;
-@property (nonatomic, assign) BOOL pageControlUsed;
+//@property (nonatomic, readwrite, retain) UIPageControl *pageControl;
+//@property (nonatomic, assign) BOOL pageControlUsed;
 @end
 
 @implementation CustomPageViewController
-@synthesize pageControl = _pageControl;
-@synthesize pageControlUsed = _pageControlUsed;
+//@synthesize pageControl = _pageControl;
+//@synthesize pageControlUsed = _pageControlUsed;
 @synthesize pageObjectEdgeInsetsPortrait = _pageObjectEdgeInsetsPortrait;
 @synthesize pageObjectEdgeInsetsLandscape = _pageObjectEdgeInsetsLandscape;
 
 - (void)dealloc
 {
-    self.pageControl = nil;
+//    self.pageControl = nil;
     [super dealloc];
 }
 
@@ -47,14 +47,14 @@
     
     self.view.backgroundColor = [UIColor scrollViewTexturedBackgroundColor];
     
-    CGRect frame = self.view.bounds;
-    frame.origin.y = frame.size.height-20.0f;
-    frame.size.height = 20.0f;
-    self.pageControl.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleTopMargin;
-    self.pageControl.frame = frame;
-    self.pageControl.layer.borderWidth = 1.0f;
-    self.pageControl.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:.2f];
-    [self.view addSubview:self.pageControl];
+//    CGRect frame = self.view.bounds;
+//    frame.origin.y = frame.size.height-20.0f;
+//    frame.size.height = 20.0f;
+//    self.pageControl.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleTopMargin;
+//    self.pageControl.frame = frame;
+//    self.pageControl.layer.borderWidth = 1.0f;
+//    self.pageControl.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:.2f];
+//    [self.view addSubview:self.pageControl];
 }
 
 - (CGRect)frameForPageAtIndex:(NSUInteger)index
@@ -70,59 +70,59 @@
     return UIEdgeInsetsInsetRect(bounds, insets);
 }
 
-- (void)reloadData
-{
-    [super reloadData];
-    
-    //
-    self.pageControl.numberOfPages = self.numberOfPages;
-    self.pageControl.currentPage = self.currentPage;
-}
+//- (void)reloadData
+//{
+//    [super reloadData];
+//    
+//    //
+//    self.pageControl.numberOfPages = self.numberOfPages;
+//    self.pageControl.currentPage = self.currentPage;
+//}
 
 #pragma mark - ScrollView delegate methods
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView
-{
-    [super scrollViewDidScroll:scrollView];
-    
-    // Switch the indicator when more than 50% of the previous/next page is visible
-    if (!self.pageControlUsed)
-    {
-        CGFloat pageWidth = scrollView.frame.size.width;
-        int page = floor((scrollView.contentOffset.x - pageWidth / 2) / pageWidth) + 1;
-        self.pageControl.currentPage = page;
-    }
-}
+//- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+//{
+//    [super scrollViewDidScroll:scrollView];
+//    
+//    // Switch the indicator when more than 50% of the previous/next page is visible
+//    if (!self.pageControlUsed)
+//    {
+//        CGFloat pageWidth = scrollView.frame.size.width;
+//        int page = floor((scrollView.contentOffset.x - pageWidth / 2) / pageWidth) + 1;
+//        self.pageControl.currentPage = page;
+//    }
+//}
+//
+//- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
+//{
+//    self.pageControlUsed = NO;
+//}
+//
+//- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+//{
+//    [super scrollViewDidEndDecelerating:scrollView];
+//    self.pageControlUsed = NO;
+//}
 
-- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
-{
-    self.pageControlUsed = NO;
-}
-
-- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
-{
-    [super scrollViewDidEndDecelerating:scrollView];
-    self.pageControlUsed = NO;
-}
-
-#pragma mark - Getters
-- (UIPageControl *)pageControl
-{
-    if (!self->_pageControl)
-    {
-        self->_pageControl = [[UIPageControl alloc] init];
-        [self->_pageControl addTarget:self action:@selector(pageControlValueChanged:) forControlEvents:UIControlEventValueChanged];
-    }
-    
-    return self->_pageControl;
-}
-
-#pragma mark - Actions
-- (void)pageControlValueChanged:(UIPageControl *)pageControl
-{
-    int page = pageControl.currentPage;
-    self.pageControlUsed = YES;
-    [self setCurrentPage:page animated:YES];
-}
+//#pragma mark - Getters
+//- (UIPageControl *)pageControl
+//{
+//    if (!self->_pageControl)
+//    {
+//        self->_pageControl = [[UIPageControl alloc] init];
+//        [self->_pageControl addTarget:self action:@selector(pageControlValueChanged:) forControlEvents:UIControlEventValueChanged];
+//    }
+//    
+//    return self->_pageControl;
+//}
+//
+//#pragma mark - Actions
+//- (void)pageControlValueChanged:(UIPageControl *)pageControl
+//{
+//    int page = pageControl.currentPage;
+//    self.pageControlUsed = YES;
+//    [self setCurrentPage:page animated:YES];
+//}
 
 #pragma mark - PageViewDataSource
 - (NSInteger)numberOfPagesInPageViewController:(FWTPageViewController *)pageViewController

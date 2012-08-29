@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "FWTPageControl.h"
 
 @class FWTPageViewController;
 @protocol FWTPageViewDataSource <NSObject>
@@ -21,11 +22,13 @@
     UIScrollView *_pagingScrollView;
     NSInteger _numberOfPages, _currentPage;
     id<FWTPageViewDataSource> _dataSource;
+    FWTPageControl *_pageControl;
 }
 
 @property (nonatomic, readonly, retain) UIScrollView *pagingScrollView;
 @property (nonatomic, assign) NSInteger numberOfPages, currentPage;
 @property (nonatomic, assign) id<FWTPageViewDataSource> dataSource;
+@property (nonatomic, readonly, retain) FWTPageControl *pageControl;
 
 - (void)setCurrentPage:(NSInteger)currentPage animated:(BOOL)animated;
 
