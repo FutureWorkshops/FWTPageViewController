@@ -20,10 +20,13 @@ static char const * const pageNumberKey = "pageNumberKey";
     CGFloat       percentScrolledIntoFirstVisiblePage;
     
     BOOL _changingOrientation;
+    BOOL _pageControlUsed;
 }
 @property (nonatomic, readwrite, retain) UIScrollView *pagingScrollView;
 @property (nonatomic, retain) NSMutableSet *recycledPages, *visiblePages;
 @property (nonatomic, getter = isChangingOrientation) BOOL changingOrientation;
+@property (nonatomic, readwrite, retain) FWTPageControl *pageControl;
+@property (nonatomic, getter = isPageControlUsed, assign) BOOL pageControlUsed;
 
 //
 - (void)tilePages;
@@ -47,6 +50,7 @@ static char const * const pageNumberKey = "pageNumberKey";
 
 - (void)dealloc
 {
+    self.pageControl = nil;
     self.dataSource = nil;
     self.recycledPages = nil;
     self.visiblePages = nil;
@@ -70,6 +74,12 @@ static char const * const pageNumberKey = "pageNumberKey";
 {
     //
     [super loadView];
+    
+    //
+    [self.view addSubview:self.pagingScrollView];
+    
+    //
+    [self.view addSubview:self.pageControl];
     
     //
     [self reloadData];
@@ -129,6 +139,22 @@ static char const * const pageNumberKey = "pageNumberKey";
         self->_visiblePages = [[NSMutableSet alloc] init];
     
     return self->_visiblePages;
+}
+
+- (FWTPageControl *)pageControl
+{
+    if (!self->_pageControl)
+    {
+        CGFloat height = 20.0f;
+        CGRect frame = self.view.bounds;
+        frame.origin.y = frame.size.height-height;
+        frame.size.height = height;
+        self->_pageControl = [[FWTPageControl alloc] initWithFrame:frame];
+        self->_pageControl.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleTopMargin;
+        [self->_pageControl addTarget:self action:@selector(pageControlValueChanged:) forControlEvents:UIControlEventValueChanged];
+    }
+    
+    return self->_pageControl;
 }
 
 #pragma mark - Tiling and page configuration
@@ -194,16 +220,37 @@ static char const * const pageNumberKey = "pageNumberKey";
 {
     if (![self isChangingOrientation])
         [self tilePages];
+    
+    if (![self isPageControlUsed])
+    {
+        CGFloat pageWidth = scrollView.frame.size.width;
+        int page = floor((scrollView.contentOffset.x - pageWidth / 2) / pageWidth) + 1;
+        self.pageControl.currentPage = page;
+    }
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
     [self updateCurrentPage];
+    self.pageControlUsed = NO;
 }
 
 - (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView
 {
     [self updateCurrentPage];
+}
+
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
+{
+    self.pageControlUsed = NO;
+}
+
+#pragma mark - Actions
+- (void)pageControlValueChanged:(UIPageControl *)pageControl
+{
+    int page = pageControl.currentPage;
+    self.pageControlUsed = YES;
+    [self setCurrentPage:page animated:YES];
 }
 
 #pragma mark -
@@ -328,13 +375,15 @@ static char const * const pageNumberKey = "pageNumberKey";
     self.numberOfPages = [self.dataSource numberOfPagesInPageViewController:self];
     
     //
-    if (!self.pagingScrollView.superview)
-        [self.view addSubview:self.pagingScrollView];
     self.pagingScrollView.frame = self.view.bounds;
     self.pagingScrollView.contentSize = [self contentSizeForPagingScrollView];
     
     //
     [self tilePages];
+    
+    //
+    self.pageControl.numberOfPages = self.numberOfPages;
+    self.pageControl.currentPage = self.currentPage;
     
     //
     if (self.currentPage != 0)

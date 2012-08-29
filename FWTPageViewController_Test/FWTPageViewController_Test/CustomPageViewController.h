@@ -10,11 +10,11 @@
 
 @interface CustomPageViewController : FWTPageViewController <FWTPageViewDataSource>
 {
-    UIPageControl *_pageControl;
+//    UIPageControl *_pageControl;
     UIEdgeInsets _pageObjectEdgeInsetsPortrait, _pageObjectEdgeInsetsLandscape;
 }
 
 @property (nonatomic, assign) UIEdgeInsets pageObjectEdgeInsetsPortrait, pageObjectEdgeInsetsLandscape;
-@property (nonatomic, readonly, retain) UIPageControl *pageControl;
+//@property (nonatomic, readonly, retain) UIPageControl *pageControl;
 
 @end
