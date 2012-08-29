@@ -28,6 +28,8 @@ static char const * const pageNumberKey = "pageNumberKey";
 @property (nonatomic, readwrite, retain) FWTPageControl *pageControl;
 @property (nonatomic, getter = isPageControlUsed, assign) BOOL pageControlUsed;
 
+@property (nonatomic, retain) UIPageControl *defaultPageControl;
+
 //
 - (void)tilePages;
 - (BOOL)isDisplayingPageForIndex:(NSUInteger)index;
@@ -79,7 +81,18 @@ static char const * const pageNumberKey = "pageNumberKey";
     [self.view addSubview:self.pagingScrollView];
     
     //
+    CGFloat height = 20.0f;
+    CGRect frame = self.view.bounds;
+    frame.origin.y = frame.size.height-height;
+    frame.size.height = height;
+    self.pageControl.frame = frame;
     [self.view addSubview:self.pageControl];
+    
+    self.defaultPageControl = [[[UIPageControl alloc] init] autorelease];
+    self.defaultPageControl.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleTopMargin;
+    self.defaultPageControl.frame = CGRectOffset(self.pageControl.frame, .0f, -self.pageControl.frame.size.height);
+    [self.defaultPageControl addTarget:self action:@selector(pageControlValueChanged:) forControlEvents:UIControlEventValueChanged];
+    [self.view addSubview:self.defaultPageControl];
     
     //
     [self reloadData];
@@ -145,11 +158,7 @@ static char const * const pageNumberKey = "pageNumberKey";
 {
     if (!self->_pageControl)
     {
-        CGFloat height = 20.0f;
-        CGRect frame = self.view.bounds;
-        frame.origin.y = frame.size.height-height;
-        frame.size.height = height;
-        self->_pageControl = [[FWTPageControl alloc] initWithFrame:frame];
+        self->_pageControl = [[FWTPageControl alloc] init];
         self->_pageControl.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleTopMargin;
         [self->_pageControl addTarget:self action:@selector(pageControlValueChanged:) forControlEvents:UIControlEventValueChanged];
     }
@@ -226,6 +235,7 @@ static char const * const pageNumberKey = "pageNumberKey";
         CGFloat pageWidth = scrollView.frame.size.width;
         int page = floor((scrollView.contentOffset.x - pageWidth / 2) / pageWidth) + 1;
         self.pageControl.currentPage = page;
+        self.defaultPageControl.currentPage = page;
     }
 }
 
@@ -251,6 +261,9 @@ static char const * const pageNumberKey = "pageNumberKey";
     int page = pageControl.currentPage;
     self.pageControlUsed = YES;
     [self setCurrentPage:page animated:YES];
+    
+    self.pageControl.currentPage = page;
+    self.defaultPageControl.currentPage = page;
 }
 
 #pragma mark -
@@ -384,6 +397,9 @@ static char const * const pageNumberKey = "pageNumberKey";
     //
     self.pageControl.numberOfPages = self.numberOfPages;
     self.pageControl.currentPage = self.currentPage;
+    
+    self.defaultPageControl.numberOfPages = self.numberOfPages;
+    self.defaultPageControl.currentPage = self.currentPage;
     
     //
     if (self.currentPage != 0)

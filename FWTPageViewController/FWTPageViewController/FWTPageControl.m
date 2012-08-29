@@ -13,9 +13,13 @@
 @implementation FWTPageControl
 @synthesize currentPage = _currentPage;
 @synthesize numberOfPages = _numberOfPages;
+@synthesize selectedImage = _selectedImage;
+@synthesize unselectedImage = _unselectedImage;
 
 - (void)dealloc
 {
+    self.tintColorSelected = nil;
+    self.tintColorUnselected = nil;
     self.selectedImage = nil;
     self.unselectedImage = nil;
     [super dealloc];
@@ -28,6 +32,9 @@
         self.layer.borderColor = [UIColor redColor].CGColor;
         self.backgroundColor = [UIColor clearColor];
         self.contentMode = UIViewContentModeRedraw;
+        
+        self.tintColorSelected = [UIColor whiteColor];
+        self.tintColorUnselected = [[UIColor whiteColor] colorWithAlphaComponent:.3f];
     }
     return self;
 }
@@ -104,7 +111,7 @@
 	}
 }
 
-#pragma mark - Getters
+#pragma mark - Accessors
 - (UIImage *)selectedImage
 {
     if (!self->_selectedImage)
@@ -114,7 +121,7 @@
         UIGraphicsBeginImageContextWithOptions(ctxSize, NO, .0f);
         CGContextRef ctx = UIGraphicsGetCurrentContext();
         CGRect ellipseRect = CGRectInset(ctxRect, 1, 1);
-        CGContextSetFillColorWithColor(ctx, [UIColor whiteColor].CGColor);
+        CGContextSetFillColorWithColor(ctx, self.tintColorSelected.CGColor);
         CGContextFillEllipseInRect(ctx, ellipseRect);
         UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
         UIGraphicsEndImageContext();
@@ -123,6 +130,18 @@
     }
     
     return self->_selectedImage;
+}
+
+- (void)setSelectedImage:(UIImage *)selectedImage
+{
+    if (self->_selectedImage != selectedImage)
+    {
+        [self->_selectedImage release];
+        self->_selectedImage = [selectedImage retain];
+        
+        [self sizeToFit];
+        [self setNeedsDisplay];
+    }
 }
 
 - (UIImage *)unselectedImage
@@ -134,7 +153,7 @@
         UIGraphicsBeginImageContextWithOptions(ctxSize, NO, .0f);
         CGContextRef ctx = UIGraphicsGetCurrentContext();
         CGRect ellipseRect = CGRectInset(ctxRect, 1, 1);
-        CGContextSetFillColorWithColor(ctx, [[UIColor whiteColor] colorWithAlphaComponent:.3f].CGColor);
+        CGContextSetFillColorWithColor(ctx, self.tintColorUnselected.CGColor);
         CGContextFillEllipseInRect(ctx, ellipseRect);
         UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
         UIGraphicsEndImageContext();
@@ -143,6 +162,18 @@
     }
     
     return self->_unselectedImage;
+}
+
+- (void)setUnselectedImage:(UIImage *)unselectedImage
+{
+    if (self->_unselectedImage != unselectedImage)
+    {
+        [self->_unselectedImage release];
+        self->_unselectedImage = [unselectedImage retain];
+        
+        [self sizeToFit];
+        [self setNeedsDisplay];
+    }
 }
 
 @end
