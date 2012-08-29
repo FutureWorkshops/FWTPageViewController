@@ -23,7 +23,7 @@
     if (!self.imageView.superview)
         [self addSubview:self.imageView];
     
-    UIEdgeInsets imageViewEdgeInsets = UIEdgeInsetsMake(10, 10, 10, 10);
+    UIEdgeInsets imageViewEdgeInsets = UIEdgeInsetsMake(10, 10, 40, 10);
     self.imageView.frame = UIEdgeInsetsInsetRect(self.bounds, imageViewEdgeInsets);
     
     if (!self.label.superview)
