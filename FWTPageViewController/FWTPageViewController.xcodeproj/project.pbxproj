@@ -30,7 +30,6 @@
 /* Begin PBXFileReference section */
 		A9B829AE15EE610500FD5B9A /* FWTPageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWTPageControl.h; sourceTree = "<group>"; };
 		A9B829AF15EE610500FD5B9A /* FWTPageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWTPageControl.m; sourceTree = "<group>"; };
-		A9B829B215EE618500FD5B9A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		E44A141515DE4BAC006C619A /* libFWTPageViewController.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libFWTPageViewController.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		E44A141815DE4BAC006C619A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		E44A141C15DE4BAC006C619A /* FWTPageViewController-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FWTPageViewController-Prefix.pch"; sourceTree = "<group>"; };
@@ -72,7 +71,6 @@
 		E44A141715DE4BAC006C619A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				A9B829B215EE618500FD5B9A /* QuartzCore.framework */,
 				E44A142615DE4C0E006C619A /* UIKit.framework */,
 				E44A141815DE4BAC006C619A /* Foundation.framework */,
 			);
