@@ -8,14 +8,10 @@
 
 #import "ContainerViewController.h"
 #import "PageView.h"
+#import "FWTPageViewController.h"
 
-@interface ContainerViewController ()
-{
-    
-}
-
+@interface ContainerViewController () <FWTPageViewDataSource>
 @property (nonatomic, retain) FWTPageViewController *pageViewController;
-
 @end
 
 @implementation ContainerViewController
@@ -25,38 +21,6 @@
 {
     self.pageViewController = nil;
     [super dealloc];
-}
-
-- (id)init
-{
-    if ((self = [super init]))
-    {
-        CGSize ctxSize = CGSizeMake(8, 8);
-        CGRect ctxRect = CGRectMake(.0f, .0f, ctxSize.width, ctxSize.height);
-        UIGraphicsBeginImageContextWithOptions(ctxSize, NO, .0f);
-        CGContextRef ctx = UIGraphicsGetCurrentContext();
-        CGRect ellipseRect = CGRectInset(ctxRect, 1, 1);
-        CGContextSetFillColorWithColor(ctx, [UIColor redColor].CGColor);
-        CGContextFillEllipseInRect(ctx, ellipseRect);
-        UIImage *selectedImage = UIGraphicsGetImageFromCurrentImageContext();
-        UIGraphicsEndImageContext();
-        
-        UIGraphicsBeginImageContextWithOptions(ctxSize, NO, .0f);
-        ctx = UIGraphicsGetCurrentContext();
-        ellipseRect = CGRectInset(ctxRect, 1, 1);
-        CGContextSetFillColorWithColor(ctx, [[UIColor redColor] colorWithAlphaComponent:.3f].CGColor);
-        CGContextFillEllipseInRect(ctx, ellipseRect);
-        UIImage *unselectedImage = UIGraphicsGetImageFromCurrentImageContext();
-        UIGraphicsEndImageContext();
-        
-        self.pageViewController.pageControl.tintColorUnselected = [[UIColor blackColor] colorWithAlphaComponent:.3f];
-        self.pageViewController.pageControl.tintColorSelected = [[UIColor blackColor] colorWithAlphaComponent:.5f];
-        
-//        self.pageViewController.pageControl.selectedImage = selectedImage;
-//        self.pageViewController.pageControl.unselectedImage = unselectedImage;
-    }
-    
-    return self;
 }
 
 - (void)loadView
@@ -74,12 +38,6 @@
     self.pageViewController.view.layer.borderColor = [UIColor redColor].CGColor;
 }
 
-- (void)viewDidUnload
-{
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
-}
-
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return YES;
@@ -92,6 +50,9 @@
     {
         self->_pageViewController = [[FWTPageViewController alloc] init];
         self->_pageViewController.dataSource = self;
+        self->_pageViewController.pageControlEnabled = YES;
+        self->_pageViewController.pageControl.tintColorUnselected = [[UIColor blackColor] colorWithAlphaComponent:.3f];
+        self->_pageViewController.pageControl.tintColorSelected = [[UIColor blackColor] colorWithAlphaComponent:.5f];
     }
     
     return self->_pageViewController;

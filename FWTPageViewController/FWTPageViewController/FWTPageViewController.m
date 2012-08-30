@@ -28,8 +28,6 @@ static char const * const pageNumberKey = "pageNumberKey";
 @property (nonatomic, readwrite, retain) FWTPageControl *pageControl;
 @property (nonatomic, getter = isPageControlUsed, assign) BOOL pageControlUsed;
 
-@property (nonatomic, retain) UIPageControl *defaultPageControl;
-
 //
 - (void)tilePages;
 - (BOOL)isDisplayingPageForIndex:(NSUInteger)index;
@@ -52,6 +50,7 @@ static char const * const pageNumberKey = "pageNumberKey";
 
 - (void)dealloc
 {
+    self.customizePageControlBlock = nil;
     self.pageControl = nil;
     self.dataSource = nil;
     self.recycledPages = nil;
@@ -67,6 +66,20 @@ static char const * const pageNumberKey = "pageNumberKey";
     {
         self.numberOfPages = 0;
         self.currentPage = 0;
+        
+        self.customizePageControlBlock = ^(FWTPageViewController *pageViewController){
+                        
+            //
+            pageViewController.pageControl.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleTopMargin;
+            
+            //
+            CGFloat dyFromBottomEdge = 10.0f;
+            CGFloat height = 20.0f;
+            CGRect frame = pageViewController.view.bounds;
+            frame.origin.y = frame.size.height-height-dyFromBottomEdge;
+            frame.size.height = height;
+            pageViewController.pageControl.frame = frame;
+        };
     }
     
     return self;
@@ -81,18 +94,13 @@ static char const * const pageNumberKey = "pageNumberKey";
     [self.view addSubview:self.pagingScrollView];
     
     //
-    CGFloat height = 20.0f;
-    CGRect frame = self.view.bounds;
-    frame.origin.y = frame.size.height-height;
-    frame.size.height = height;
-    self.pageControl.frame = frame;
-    [self.view addSubview:self.pageControl];
-    
-    self.defaultPageControl = [[[UIPageControl alloc] init] autorelease];
-    self.defaultPageControl.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleTopMargin;
-    self.defaultPageControl.frame = CGRectOffset(self.pageControl.frame, .0f, -self.pageControl.frame.size.height);
-    [self.defaultPageControl addTarget:self action:@selector(pageControlValueChanged:) forControlEvents:UIControlEventValueChanged];
-    [self.view addSubview:self.defaultPageControl];
+    if ([self isPageControlEnabled])
+    {        
+        if (self.customizePageControlBlock)
+            self.customizePageControlBlock(self);
+        
+        [self.view addSubview:self.pageControl];
+    }
     
     //
     [self reloadData];
@@ -119,6 +127,7 @@ static char const * const pageNumberKey = "pageNumberKey";
     self.pagingScrollView = nil;
     self.recycledPages = nil;
     self.visiblePages = nil;
+    self.pageControl = nil;
 }
 
 #pragma mark - Getters
@@ -156,10 +165,12 @@ static char const * const pageNumberKey = "pageNumberKey";
 
 - (FWTPageControl *)pageControl
 {
+    if (![self isPageControlEnabled])
+        return nil;
+        
     if (!self->_pageControl)
     {
         self->_pageControl = [[FWTPageControl alloc] init];
-        self->_pageControl.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleTopMargin;
         [self->_pageControl addTarget:self action:@selector(pageControlValueChanged:) forControlEvents:UIControlEventValueChanged];
     }
     
@@ -230,12 +241,11 @@ static char const * const pageNumberKey = "pageNumberKey";
     if (![self isChangingOrientation])
         [self tilePages];
     
-    if (![self isPageControlUsed])
+    if (![self isPageControlUsed] && [self isPageControlEnabled])
     {
         CGFloat pageWidth = scrollView.frame.size.width;
         int page = floor((scrollView.contentOffset.x - pageWidth / 2) / pageWidth) + 1;
         self.pageControl.currentPage = page;
-        self.defaultPageControl.currentPage = page;
     }
 }
 
@@ -263,7 +273,6 @@ static char const * const pageNumberKey = "pageNumberKey";
     [self setCurrentPage:page animated:YES];
     
     self.pageControl.currentPage = page;
-    self.defaultPageControl.currentPage = page;
 }
 
 #pragma mark -
@@ -395,11 +404,11 @@ static char const * const pageNumberKey = "pageNumberKey";
     [self tilePages];
     
     //
-    self.pageControl.numberOfPages = self.numberOfPages;
-    self.pageControl.currentPage = self.currentPage;
-    
-    self.defaultPageControl.numberOfPages = self.numberOfPages;
-    self.defaultPageControl.currentPage = self.currentPage;
+    if ([self isPageControlEnabled])
+    {
+        self.pageControl.numberOfPages = self.numberOfPages;
+        self.pageControl.currentPage = self.currentPage;
+    }
     
     //
     if (self.currentPage != 0)

@@ -16,6 +16,14 @@
     [super dealloc];
 }
 
+- (id)init
+{
+    if ((self = [super init])) {
+        self.imageViewEdgeInsets = UIEdgeInsetsMake(10, 10, 40, 10);
+    }
+    return self;
+}
+
 - (void)layoutSubviews
 {
     [super layoutSubviews];
@@ -23,8 +31,7 @@
     if (!self.imageView.superview)
         [self addSubview:self.imageView];
     
-    UIEdgeInsets imageViewEdgeInsets = UIEdgeInsetsMake(10, 10, 40, 10);
-    self.imageView.frame = UIEdgeInsetsInsetRect(self.bounds, imageViewEdgeInsets);
+    self.imageView.frame = UIEdgeInsetsInsetRect(self.bounds, self.imageViewEdgeInsets);
     
     if (!self.label.superview)
         [self addSubview:self.label];
@@ -39,7 +46,6 @@
     {
         self->_label = [[UILabel alloc] init];
         self->_label.backgroundColor = [UIColor clearColor];
-//        self->_label.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"noise.png"]];
         self->_label.textAlignment = UITextAlignmentCenter;
         self->_label.font = [UIFont boldSystemFontOfSize:120];
         self->_label.textColor = [UIColor colorWithWhite:.8f alpha:.7f];

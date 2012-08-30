@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A97B442215EF6F2400F3E916 /* DebugPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A97B442115EF6F2400F3E916 /* DebugPageViewController.m */; };
 		E44A143815DE4CB4006C619A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E44A143715DE4CB4006C619A /* UIKit.framework */; };
 		E44A143A15DE4CB4006C619A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E44A143915DE4CB4006C619A /* Foundation.framework */; };
 		E44A143C15DE4CB4006C619A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E44A143B15DE4CB4006C619A /* CoreGraphics.framework */; };
@@ -22,6 +23,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A97B442015EF6F2400F3E916 /* DebugPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DebugPageViewController.h; sourceTree = "<group>"; };
+		A97B442115EF6F2400F3E916 /* DebugPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DebugPageViewController.m; sourceTree = "<group>"; };
 		E44A143315DE4CB4006C619A /* FWTPageViewController_Test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FWTPageViewController_Test.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E44A143715DE4CB4006C619A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		E44A143915DE4CB4006C619A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -129,6 +132,8 @@
 			children = (
 				E44A148315DE5402006C619A /* CustomPageViewController.h */,
 				E44A148415DE5402006C619A /* CustomPageViewController.m */,
+				A97B442015EF6F2400F3E916 /* DebugPageViewController.h */,
+				A97B442115EF6F2400F3E916 /* DebugPageViewController.m */,
 			);
 			name = Subclass;
 			sourceTree = "<group>";
@@ -210,6 +215,7 @@
 				E44A146B15DE4EBE006C619A /* ContainerViewController.m in Sources */,
 				E44A147015DE51CA006C619A /* PageView.m in Sources */,
 				E44A148515DE5402006C619A /* CustomPageViewController.m in Sources */,
+				A97B442215EF6F2400F3E916 /* DebugPageViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -329,6 +335,7 @@
 				E44A144D15DE4CB4006C619A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
