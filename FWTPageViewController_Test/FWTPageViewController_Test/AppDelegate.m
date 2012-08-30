@@ -22,9 +22,9 @@
 {
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
     self.window.backgroundColor = [UIColor colorWithRed:.91f green:.92f blue:.93f alpha:1.0f];
-//    UIViewController *vc = [[[SamplePickerViewController alloc] init] autorelease];
+    UIViewController *vc = [[[SamplePickerViewController alloc] init] autorelease];
     
-    UIViewController *vc = [[[ContainerViewController alloc] init] autorelease];
+//    UIViewController *vc = [[[ContainerViewController alloc] init] autorelease];
     
     self.window.rootViewController = [[[UINavigationController alloc] initWithRootViewController:vc] autorelease];
     [self.window makeKeyAndVisible];

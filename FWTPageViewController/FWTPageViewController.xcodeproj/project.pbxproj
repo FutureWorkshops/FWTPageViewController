@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		A9B829B015EE610500FD5B9A /* FWTPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = A9B829AF15EE610500FD5B9A /* FWTPageControl.m */; };
-		A9B829B315EE618500FD5B9A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9B829B215EE618500FD5B9A /* QuartzCore.framework */; };
 		E44A141915DE4BAC006C619A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E44A141815DE4BAC006C619A /* Foundation.framework */; };
 		E44A141E15DE4BAC006C619A /* FWTPageViewController.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = E44A141D15DE4BAC006C619A /* FWTPageViewController.h */; };
 		E44A142015DE4BAC006C619A /* FWTPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E44A141F15DE4BAC006C619A /* FWTPageViewController.m */; };
@@ -45,7 +44,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A9B829B315EE618500FD5B9A /* QuartzCore.framework in Frameworks */,
 				E44A142715DE4C0E006C619A /* UIKit.framework in Frameworks */,
 				E44A141915DE4BAC006C619A /* Foundation.framework in Frameworks */,
 			);

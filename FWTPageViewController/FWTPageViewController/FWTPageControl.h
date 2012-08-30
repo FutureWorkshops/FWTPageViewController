@@ -18,5 +18,6 @@
 @property (nonatomic, retain) UIImage *selectedImage;
 @property (nonatomic, retain) UIImage *unselectedImage;
 
-@property (nonatomic, retain) UIColor *tintColorSelected, *tintColorUnselected;
+@property (nonatomic, retain) UIColor *tintColorSelected;
+@property (nonatomic, retain) UIColor *tintColorUnselected;
 @end

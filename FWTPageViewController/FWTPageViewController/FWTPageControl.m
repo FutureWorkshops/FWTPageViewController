@@ -29,7 +29,6 @@
 {
     if ((self = [super initWithFrame:frame]))
     {
-        self.layer.borderColor = [UIColor redColor].CGColor;
         self.backgroundColor = [UIColor clearColor];
         self.contentMode = UIViewContentModeRedraw;
         

@@ -31,23 +31,23 @@
 {
     if ((self = [super init]))
     {
-        CGSize ctxSize = CGSizeMake(8, 8);
-        CGRect ctxRect = CGRectMake(.0f, .0f, ctxSize.width, ctxSize.height);
-        UIGraphicsBeginImageContextWithOptions(ctxSize, NO, .0f);
-        CGContextRef ctx = UIGraphicsGetCurrentContext();
-        CGRect ellipseRect = CGRectInset(ctxRect, 1, 1);
-        CGContextSetFillColorWithColor(ctx, [UIColor redColor].CGColor);
-        CGContextFillEllipseInRect(ctx, ellipseRect);
-        UIImage *selectedImage = UIGraphicsGetImageFromCurrentImageContext();
-        UIGraphicsEndImageContext();
-        
-        UIGraphicsBeginImageContextWithOptions(ctxSize, NO, .0f);
-        ctx = UIGraphicsGetCurrentContext();
-        ellipseRect = CGRectInset(ctxRect, 1, 1);
-        CGContextSetFillColorWithColor(ctx, [[UIColor redColor] colorWithAlphaComponent:.3f].CGColor);
-        CGContextFillEllipseInRect(ctx, ellipseRect);
-        UIImage *unselectedImage = UIGraphicsGetImageFromCurrentImageContext();
-        UIGraphicsEndImageContext();
+//        CGSize ctxSize = CGSizeMake(8, 8);
+//        CGRect ctxRect = CGRectMake(.0f, .0f, ctxSize.width, ctxSize.height);
+//        UIGraphicsBeginImageContextWithOptions(ctxSize, NO, .0f);
+//        CGContextRef ctx = UIGraphicsGetCurrentContext();
+//        CGRect ellipseRect = CGRectInset(ctxRect, 1, 1);
+//        CGContextSetFillColorWithColor(ctx, [UIColor redColor].CGColor);
+//        CGContextFillEllipseInRect(ctx, ellipseRect);
+//        UIImage *selectedImage = UIGraphicsGetImageFromCurrentImageContext();
+//        UIGraphicsEndImageContext();
+//        
+//        UIGraphicsBeginImageContextWithOptions(ctxSize, NO, .0f);
+//        ctx = UIGraphicsGetCurrentContext();
+//        ellipseRect = CGRectInset(ctxRect, 1, 1);
+//        CGContextSetFillColorWithColor(ctx, [[UIColor redColor] colorWithAlphaComponent:.3f].CGColor);
+//        CGContextFillEllipseInRect(ctx, ellipseRect);
+//        UIImage *unselectedImage = UIGraphicsGetImageFromCurrentImageContext();
+//        UIGraphicsEndImageContext();
         
         self.pageViewController.pageControl.tintColorUnselected = [[UIColor blackColor] colorWithAlphaComponent:.3f];
         self.pageViewController.pageControl.tintColorSelected = [[UIColor blackColor] colorWithAlphaComponent:.5f];
