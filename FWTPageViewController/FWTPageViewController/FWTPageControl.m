@@ -59,11 +59,8 @@
 
 - (CGSize)sizeThatFits:(CGSize)size
 {
-    CGFloat imageWidth = self.selectedImage.size.width;
-    CGFloat imageHeight = self.selectedImage.size.height;
-    CGFloat spaceBetween = imageWidth;
-    CGFloat totalWidth = imageWidth*self.numberOfPages + spaceBetween*(self.numberOfPages-1);
-    return CGSizeMake(MAX(totalWidth, self.bounds.size.width), MAX(imageHeight, self.bounds.size.height));
+    CGSize sizeForPages = [self sizeForNumberOfPages:self.numberOfPages];
+    return CGSizeMake(MAX(sizeForPages.width, self.bounds.size.width), MAX(sizeForPages.height, self.bounds.size.height));
 }
 
 - (CGSize)sizeForNumberOfPages:(NSInteger)pageCount
@@ -71,7 +68,7 @@
     CGFloat imageWidth = self.selectedImage.size.width;
     CGFloat imageHeight = self.selectedImage.size.height;
     CGFloat spaceBetween = imageWidth;
-    CGFloat totalWidth = imageWidth*self.numberOfPages + spaceBetween*(self.numberOfPages-1);
+    CGFloat totalWidth = imageWidth*pageCount + spaceBetween*MAX(pageCount-1, 0);
     return CGSizeMake(totalWidth, imageHeight);
 }
 
@@ -136,10 +133,14 @@
     if (self->_selectedImage != selectedImage)
     {
         [self->_selectedImage release];
-        self->_selectedImage = [selectedImage retain];
         
-        [self sizeToFit];
-        [self setNeedsDisplay];
+        if (selectedImage)
+        {
+            self->_selectedImage = [selectedImage retain];
+            
+            [self sizeToFit];
+            [self setNeedsDisplay];
+        }
     }
 }
 
@@ -168,10 +169,14 @@
     if (self->_unselectedImage != unselectedImage)
     {
         [self->_unselectedImage release];
-        self->_unselectedImage = [unselectedImage retain];
         
-        [self sizeToFit];
-        [self setNeedsDisplay];
+        if (unselectedImage)
+        {
+            self->_unselectedImage = [unselectedImage retain];
+            
+            [self sizeToFit];
+            [self setNeedsDisplay];
+        }
     }
 }
 

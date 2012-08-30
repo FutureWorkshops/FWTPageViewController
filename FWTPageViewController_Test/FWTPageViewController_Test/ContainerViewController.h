@@ -7,10 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "FWTPageViewController.h"
 
-@interface ContainerViewController : UIViewController <FWTPageViewDataSource>
-{
-    FWTPageViewController *_pageViewController;
-}
+@interface ContainerViewController : UIViewController 
 @end

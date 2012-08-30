@@ -42,7 +42,11 @@
 - (NSArray *)items
 {
     if (!self->_items)
-        self->_items = [@[@"ContainerViewController", @"CustomPageViewController"] retain];
+        self->_items = [@[
+                        @"ContainerViewController",
+                        @"CustomPageViewController",
+                        @"DebugPageViewController",
+                        ] retain];
     
     return self->_items;
 }

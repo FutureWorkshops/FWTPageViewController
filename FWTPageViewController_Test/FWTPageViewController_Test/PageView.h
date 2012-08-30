@@ -14,5 +14,6 @@
 }
 
 @property (nonatomic, readonly, retain) UILabel *label;
+@property (nonatomic, assign) UIEdgeInsets imageViewEdgeInsets;
 
 @end
