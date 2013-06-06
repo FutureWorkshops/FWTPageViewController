@@ -106,11 +106,10 @@ static char const * const pageNumberKey = "pageNumberKey";
     [self reloadData];
 }
 
-- (void)viewWillAppear:(BOOL)animated
+- (void)viewWillLayoutSubviews
 {
-    [super viewWillAppear:animated];
+    [super viewWillLayoutSubviews];
     
-    //
     self.pagingScrollView.frame = self.view.bounds;
     self.pagingScrollView.contentSize = [self contentSizeForPagingScrollView];
     
